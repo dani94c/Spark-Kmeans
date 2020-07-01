@@ -22,13 +22,16 @@ def compute_closest(point, cent):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: ./main.py inputFile K outputFile")
+    if len(sys.argv) != 7:
+        print("Usage: ./main.py <inputFile> <K> <seed> <outputFile> <maxIterations> <minShift>")
         sys.exit()
 
     input_file = sys.argv[1]
     k = int(sys.argv[2])
-    output_file = sys.argv[3]
+    seed = int(sys.argv[3])
+    output_file = sys.argv[4]
+    maxIterations = int(sys.argv[5])
+    minShift = float(sys.argv[6])
 
     output_path = pathlib.Path(output_file)
     if output_path.exists() and output_path.is_dir():
@@ -42,13 +45,13 @@ if __name__ == "__main__":
     # print("Points of inputFile are:", points.collect())
 
     # takeSample(withReplacement, number, seed): prendo k centroidi random tra i punti in input
-    initial_centroids = points.takeSample(False, k, 1)
+    initial_centroids = points.takeSample(False, k, seed)
     print("Initial centroids:", initial_centroids)
 
     shift = math.inf
     iteration = 0
 
-    while iteration < 2 and shift > 0.005:
+    while iteration < maxIterations and shift > minShift:
         closest_centroid = points.map(lambda x: (compute_closest(x, initial_centroids)))
         # print("Closest centroid:", closest_centroid.collect())
         # new centroid is an ordered array containing the values of the new centroids from the smallest to biggest key
