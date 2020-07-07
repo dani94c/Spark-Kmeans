@@ -27,7 +27,7 @@ def delete_previous_output(output, sc):
 
     fs = FileSystem.get(sc._jsc.hadoopConfiguration())
     fs.delete(Path(output))
-    print("Path:",Path(output))
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 7:
@@ -48,6 +48,7 @@ if __name__ == "__main__":
 
     delete_previous_output(output, sc)
 
+    # points is an RDD containing the points taken from input_file
     points = sc.textFile(input_file).map(parse_point).persist(pyspark.StorageLevel.MEMORY_AND_DISK)
     initial_centroids = sc.textFile(centroid_file).map(parse_point).collect()
     print("Initial centroids:", initial_centroids.collect())
