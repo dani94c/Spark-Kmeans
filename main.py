@@ -54,7 +54,7 @@ if __name__ == "__main__":
     points = sc.textFile(input_file).map(parse_point).persist(pyspark.StorageLevel.MEMORY_AND_DISK)
 	# initial_centroids is an RDD containing the centroids taken from centroid_file
     initial_centroids = sc.textFile(centroid_file).map(parse_point).collect()
-    print("Initial centroids:", initial_centroids.collect())
+    # print("Initial centroids:", initial_centroids)
 
     shift = math.inf
     iteration = 0
