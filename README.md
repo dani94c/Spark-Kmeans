@@ -15,4 +15,4 @@ The documentation of the didactic project related to this repository is availabl
 In the documentation it is also reported the results of the **Hadoop** framework execution, the related repository is available [here](https://github.com/dani94c/Hadoop-Kmeans).
 
 ## Credits
-This application has been developed by D.Comola, E. Petrangeli, G. Alvaro, L. Fontanelli as part of the Cloud Computing course for the MsC in Computer Engineering @ Univerisity of Pisa in 2019.
+This application has been developed by D.Comola, E. Petrangeli, G. Alvaro, L. Fontanelli as part of the Cloud Computing course for the MSc in Computer Engineering @ Univerisity of Pisa in 2019.
